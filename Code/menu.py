@@ -2,7 +2,7 @@ import pygame.image
 
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.constants import colorOrange, menuOptions, colorWhite
+from Code.constants import colorOrange, menuOptions, colorWhite, colorYellow
 
 
 class Menu:
@@ -22,7 +22,10 @@ class Menu:
             self.menu_text(130, "Slash", colorOrange, ((960 / 2), 180))
 
             for i in range(len(menuOptions)):
-                self.menu_text(80, menuOptions[i], colorWhite, ((960 / 2), 290 + 60 * i))
+                if i == menuOptions:
+                    self.menu_text(80, menuOptions[i], colorYellow, ((960 / 2), 290 + 60 * i))
+                else:
+                    self.menu_text(80, menuOptions[i], colorWhite, ((960 / 2), 290 + 60 * i))
 
             pygame.display.flip()
 
