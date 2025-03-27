@@ -13,6 +13,7 @@ class Menu:
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self, ):
+        menu_options = 0
         pygame.mixer_music.load('./assets/bgMusic.mpeg')
         pygame.mixer_music.play(-1)
 
@@ -22,7 +23,7 @@ class Menu:
             self.menu_text(130, "Slash", colorOrange, ((960 / 2), 180))
 
             for i in range(len(menuOptions)):
-                if i == menuOptions:
+                if i == menu_options:
                     self.menu_text(80, menuOptions[i], colorYellow, ((960 / 2), 290 + 60 * i))
                 else:
                     self.menu_text(80, menuOptions[i], colorWhite, ((960 / 2), 290 + 60 * i))
@@ -33,6 +34,22 @@ class Menu:
                 if event.type == pygame.QUIT:
                    pygame.quit()
                    quit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_DOWN:
+                        if menu_options < len(menuOptions) - 1:
+                            menu_options +=1
+                        else:
+                            menu_options = 0
+
+                    if event.key == pygame.K_UP:
+                        if menu_options < len(menuOptions) - 1:
+                            menu_options +=1
+                        else:
+                            menu_options = 0
+
+                    if event.key == pygame.K_RETURN:
+                        return menuOptions[menu_options]
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.Font('./assets/Jacquard12-Regular.ttf', size = text_size)

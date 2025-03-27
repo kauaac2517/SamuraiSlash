@@ -1,6 +1,7 @@
 import pygame
 
-from Code.constants import windowWidth, windowHeight
+from Code.constants import windowWidth, windowHeight, menuOptions
+from Code.gameplay import Gameplay
 from Code.menu import Menu
 
 class Game:
@@ -11,5 +12,11 @@ class Game:
     def run(self):
         while True:
             menu = Menu(self.window)
-            menu.run()
-            pass
+            menuReturn = menu.run()
+
+            if menuReturn == menuOptions[0]:
+                gameplay = Gameplay(self.window)
+                gameplayReturn = gameplay.run()
+            elif menuReturn == menuOptions[1]:
+                pygame.quit()
+                quit()
