@@ -15,8 +15,8 @@ class Game:
             menuReturn = menu.run()
 
             if menuReturn == menuOptions[0]:
-                gameplay = Gameplay(self.window) #, "bgInGame")
-                gameplayReturn = gameplay.run()
+                gameplay = Gameplay(self.window, "Player")
+                gameplay.run()
             elif menuReturn == menuOptions[1]:
                 pygame.quit()
                 quit()
