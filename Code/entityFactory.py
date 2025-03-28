@@ -1,4 +1,3 @@
-from Code.background import Background
 from Code.constants import windowHeight
 from Code.player import Player
 

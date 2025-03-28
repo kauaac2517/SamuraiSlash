@@ -1,6 +1,6 @@
 import pygame
 
-from typing import List
+#from typing import List
 from Code.entity import Entity
 from Code.entityFactory import EntityFactory
 
@@ -15,7 +15,7 @@ class Gameplay:
 
         #self.timeout = 2000
 
-        self.entity_list = list[Entity] = []
+        self.entity_list = []
         player = EntityFactory.get_entity("Player")
         self.entity_list.append(player)
 
@@ -27,6 +27,7 @@ class Gameplay:
             self.window.blit(source=self.surf, dest=self.rect)
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
+                ent.move()
 
 
             for event in pygame.event.get():
