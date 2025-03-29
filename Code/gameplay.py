@@ -1,8 +1,7 @@
 import pygame
 
-#from typing import List
-from Code.entity import Entity
 from Code.entityFactory import EntityFactory
+
 
 
 class Gameplay:
@@ -13,11 +12,11 @@ class Gameplay:
         self.surf = pygame.transform.scale(self.surf, (960, 540))
         self.rect = self.surf.get_rect(left=0, top=0)
 
-        #self.timeout = 2000
-
         self.entity_list = []
         player = EntityFactory.get_entity("Player")
         self.entity_list.append(player)
+        #self.entity_list.extend(EntityFactory.get_entity("Run"))
+
 
     def run(self):
         clock = pygame.time.Clock()
@@ -25,9 +24,12 @@ class Gameplay:
         while True:
             clock.tick(60)
             self.window.blit(source=self.surf, dest=self.rect)
+
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+
+
 
 
             for event in pygame.event.get():
