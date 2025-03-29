@@ -1,7 +1,10 @@
+import time
+
 import pygame
 
+from Code.constants import entitySpeed, windowWidth, windowHeight, spawn
 from Code.entityFactory import EntityFactory
-
+from Code.player import Player
 
 
 class Gameplay:
@@ -9,13 +12,19 @@ class Gameplay:
         self.window = window
         self.name = name
         self.surf = pygame.image.load("./assets/bgInGame.png").convert_alpha()
-        self.surf = pygame.transform.scale(self.surf, (960, 540))
+        self.surf = pygame.transform.scale(self.surf, (windowWidth, windowHeight))
         self.rect = self.surf.get_rect(left=0, top=0)
 
+
         self.entity_list = []
-        player = EntityFactory.get_entity("Player")
-        self.entity_list.append(player)
-        #self.entity_list.extend(EntityFactory.get_entity("Run"))
+        self.entity_list.extend(EntityFactory.get_entity("Player"))
+
+
+        #player = EntityFactory.get_entity("Player")
+        #self.entity_list.append(player)
+
+
+
 
 
     def run(self):
@@ -25,11 +34,10 @@ class Gameplay:
             clock.tick(60)
             self.window.blit(source=self.surf, dest=self.rect)
 
-            for ent in self.entity_list:
-                self.window.blit(source=ent.surf, dest=ent.rect)
-                ent.move()
-
-
+            #for ent in self.entity_list:
+                #self.window.blit(source=ent.surf, dest=ent.rect)
+                #ent.move()
+                #self.window.blit(source=ent.surf, dest=ent.rect)
 
 
             for event in pygame.event.get():

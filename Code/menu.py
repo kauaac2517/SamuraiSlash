@@ -2,7 +2,7 @@ import pygame.image
 
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.constants import colorRed, menuOptions, colorWhite, colorYellow
+from Code.constants import colorRed, menuOptions, colorWhite, colorYellow, windowWidth
 
 
 class Menu:
@@ -19,14 +19,14 @@ class Menu:
 
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(130, "Samurai", colorRed, ((960 / 2), 70))
-            self.menu_text(130, "Slash", colorRed, ((960 / 2), 180))
+            self.menu_text(130, "Samurai", colorRed, ((windowWidth / 2), 70))
+            self.menu_text(130, "Slash", colorRed, ((windowWidth / 2), 180))
 
             for i in range(len(menuOptions)):
                 if i == menu_options:
-                    self.menu_text(80, menuOptions[i], colorYellow, ((960 / 2), 290 + 60 * i))
+                    self.menu_text(80, menuOptions[i], colorYellow, ((windowWidth / 2), 290 + 60 * i))
                 else:
-                    self.menu_text(80, menuOptions[i], colorWhite, ((960 / 2), 290 + 60 * i))
+                    self.menu_text(80, menuOptions[i], colorWhite, ((windowWidth / 2), 290 + 60 * i))
 
             pygame.display.flip()
 

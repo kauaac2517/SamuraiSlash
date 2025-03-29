@@ -1,4 +1,6 @@
-from Code.constants import windowHeight
+import pygame
+
+from Code.constants import windowHeight, entitySpeed
 from Code.player import Player
 
 
@@ -8,10 +10,12 @@ class EntityFactory:
     def get_entity(entity_name: str, position = (0,0)):
         match entity_name:
             case "Player":
-                return Player("Player", (10, windowHeight / 2))
+                #return Player(f"player{i}", (10, windowHeight / 2))
 
-            case "Run":
+            #case "Run":
+
                 list_run=[]
-                for i in range(8):
-                    list_run.append(Player(f"Run{i}", (10, windowHeight / 2)))
+                for i in range(9):
+                    list_run.append(Player(f"Player{i}", (10, windowHeight / 2)))
+
                 return list_run

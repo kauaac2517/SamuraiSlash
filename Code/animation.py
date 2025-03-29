@@ -1,6 +1,4 @@
-class Animation:
-    def __init__(self, position: tuple):
-        self.right = [pygame.image.load(f".assets/Entidades/Run{i}.png") for i in range(1, 8)]
-
-    def run(self):
-        pass
+import pygame.key
+while True:
+    if pygame.key.get_pressed()[pygame.K_SPACE]:
+        print("Olá")
